@@ -42,26 +42,27 @@ class RegisterViewController: UIViewController {
         return label
     }()
     
-    private lazy var emailField: UITextField = {
-        let field = UITextField()
+    private lazy var emailField: TextField = {
+        let field = TextField()
         field.placeholder = "user@example.com"
+        field.setUpData(image: UIImage(systemName: "envelope.fill")!, placeholder: "email")
         field.keyboardType = .emailAddress
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         return field
     }()
     
-    private lazy var userNameField: UITextField = {
-        let field = UITextField()
-        field.placeholder = "Логин"
+    private lazy var userNameField: TextField = {
+        let field = TextField()
+        field.setUpData(image: UIImage(systemName: "person.fill")!, placeholder: "Логин")
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         return field
     }()
 
-    private lazy var passwordField: UITextField = {
-        let field = UITextField()
-        field.placeholder = "Пароль"
+    private lazy var passwordField: TextField = {
+        let field = TextField()
+        field.setUpData(image: UIImage(systemName: "lock.fill")!, placeholder: "Пароль")
         field.isSecureTextEntry = true
         return field
     }()

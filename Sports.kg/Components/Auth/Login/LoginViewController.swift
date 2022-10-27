@@ -49,19 +49,15 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    private lazy var userNameField: UITextField = {
-        let field = UITextField()
-        field.placeholder = "Логин"
-        field.autocapitalizationType = .none
-        field.autocorrectionType = .no
-        field.backgroundColor = .white
-        field.layer.cornerRadius = 6
+    private lazy var userNameField: TextField = {
+        let field = TextField()
+        field.setUpData(image: UIImage(systemName: "person.fill")!, placeholder: "Логин")
         return field
     }()
 
-    private lazy var passwordField: UITextField = {
-        let field = UITextField()
-        field.placeholder = "Пароль"
+    private lazy var passwordField: TextField = {
+        let field = TextField()
+        field.setUpData(image: UIImage(systemName: "lock.fill")!, placeholder: "Пароль")
         field.isSecureTextEntry = true
         return field
     }()
