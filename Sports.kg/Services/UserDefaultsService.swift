@@ -31,13 +31,9 @@ class UserDefaultsService {
     }
     
     enum CreateUser: String {
-        case user_information
-        case id
         case email
-        case phone_number
-        case name
-        case date_of_birth
-        case bonuses
+        case id
+        case username
     }
     
     enum CreateDoctor: String {
@@ -102,6 +98,16 @@ class UserDefaultsService {
     func saveAuth(email: String, password: String) {
         storage.setValue(email, forKey: Authentification.email.rawValue)
         storage.setValue(password, forKey: Authentification.password.rawValue)
+    }
+    
+    func saveUserInfo(email: String, username: String, id: Int) {
+        storage.setValue(email, forKey: CreateUser.email.rawValue)
+        storage.setValue(username, forKey: CreateUser.username.rawValue)
+        storage.setValue(id, forKey: CreateUser.id.rawValue)
+    }
+    
+    func getUserInfo(info: CreateUser) -> Any? {
+        return storage.value(forKey: info.rawValue)
     }
     
     func isSignedIn(signedIn: Bool) {

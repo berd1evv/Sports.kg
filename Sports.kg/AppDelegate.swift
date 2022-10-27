@@ -14,6 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let userDefaults = UserDefaultsService.shared
+        
+        if userDefaults.didSignedIn() {
+            print("Yoo")
+        }
+        _ = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
+            (_) in
+            print("Get tokens")
+         }
         return true
     }
 

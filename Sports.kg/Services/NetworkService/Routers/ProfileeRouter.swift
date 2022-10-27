@@ -8,15 +8,15 @@
 import Foundation
 
 enum ProfileeRouter: BaseRouter {
-    case getPatient(id: Int)
+    case getUser
     case addImage(id: Int, image: Data, boundary: String)
     case changeImage(id: Int, image: Data, boundary: String)
     case changeAddressAndPhone(id: Int, data: Data)
 
     var path: String {
         switch self {
-        case let .getPatient(id):
-            return "/api/v1/patients/\(id)"
+        case .getUser:
+            return "/auth/users/me/"
         case let .addImage(id, _, _):
             return "/api/v1/patients/img/\(id)"
         case let .changeImage(id, _, _):
@@ -28,7 +28,7 @@ enum ProfileeRouter: BaseRouter {
 
     var queryParameter: [URLQueryItem]? {
         switch self {
-        case .getPatient:
+        case .getUser:
             return nil
         case .addImage:
             return nil
@@ -41,7 +41,7 @@ enum ProfileeRouter: BaseRouter {
 
     var method: HttpMethod {
         switch self {
-        case .getPatient:
+        case .getUser:
             return .GET
         case .addImage:
             return .POST
@@ -54,7 +54,7 @@ enum ProfileeRouter: BaseRouter {
 
     var httpBody: Data? {
         switch self {
-        case .getPatient:
+        case .getUser:
             return nil
         case let .addImage(_, image, _):
             return image
@@ -67,7 +67,7 @@ enum ProfileeRouter: BaseRouter {
 
     var httpHeader: [HttpHeader]? {
         switch self {
-        case .getPatient:
+        case .getUser:
             return nil
         case let .addImage(_, _, boundary):
             return [HttpHeader(field: "Content-Type", value: "multipart/form-data; boundary=\(boundary)")]

@@ -17,11 +17,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             
+            let userDefaults = UserDefaultsService.shared
+            
             let window = UIWindow(windowScene: windowScene)
-            let viewController = TabBarViewController()
-            let navVC = UINavigationController(rootViewController: viewController)
             self.window = window
+            
+            print(userDefaults.didSignedIn())
+            
+//            if userDefaults.didSignedIn() {
+//                let viewController = TabBarViewController()
+//                let navVC = UINavigationController(rootViewController: viewController)
+//                window.rootViewController = navVC
+//            } else {
+//                let viewController = LoginViewController()
+//                let navVC = UINavigationController(rootViewController: viewController)
+//                window.rootViewController = navVC
+//            }
+            
+            let viewController = LoginViewController()
+            let navVC = UINavigationController(rootViewController: viewController)
             window.rootViewController = navVC
+            
             window.makeKeyAndVisible()
             
         }
